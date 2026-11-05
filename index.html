@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa - Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green: #28a745;
+            --yellow: #ffc107;
+            --black: #343a40;
+            --gray-light: #f8f9fa;
+            --gray-dark: #6c757d;
+            --gray-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--gray-white);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--gray-white);
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--green);
+            font-size: 2rem;
+        }
+
+        .section-title span {
+            color: var(--yellow);
+        }
+
+        /* Mission, Vision, Objective */
+        .m-v-o-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .m-v-o-card {
+            background: var(--gray-white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .m-v-o-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .m-v-o-card h3 {
+            color: var(--green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .m-v-o-card p {
+            color: var(--gray-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .m-v-o-card .objetivo {
+            color: var(--yellow);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Images grid */
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image-item {
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            cursor-pointer;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* About */
+        .about {
+            background: var(--gray-light);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--green);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--gray-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--gray-white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Empresa</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#mision">Misión</a></li>
+                <li><a href="#vision">Visión</a></li>
+                <li><a href="#objetivo">Objetivo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenidos a Nuestra Empresa</h1>
+            <p>Comprometidos con la excelencia y la innovación en cada proyecto que emprendemos.</p>
+        </div>
+    </section>
+
+    <!-- Misión, Visión, Objetivo -->
+    <section class="section" id="mision-vision-objetivo">
+        <div class="section-title">
+            <span>Misión, Visión y Objetivo</span>
+        </div>
+        <div class="m-v-o-container">
+            <div class="m-v-o-card">
+                <h3>Misión</h3>
+                <p>Brindar servicios de alta calidad con satisfacción garantizada, utilizando tecnología de vanguardia y un equipo humano comprometido con la excelencia.</p>
+                <span class="objetivo">Nuestro objetivo es la satisfacción del cliente</span>
+            </div>
+            <div class="m-v-o-card">
+                <h3>Visión</h3>
+                <p>Convertirnos en la empresa líder en el sector, reconocida por nuestra integridad, innovación y impacto positivo en la comunidad y el medio ambiente.</p>
+            </div>
+            <div class="m-v-o-card">
+                <h3>Objetivo</h3>
+                <p>Crecer sosteniblemente año a año, ampliando nuestra cobertura y diversificando nuestros servicios para satisfacer las necesidades cambiantes de nuestros clientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Images Gallery -->
+    <section class="section about" id="galeria">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Nuestra Galería</h2>
+                <p>Algunos de nuestros proyectos y logros más recientes que demuestran nuestro compromiso con la calidad y la excelencia.</p>
+            </div>
+            <div class="about-image">
+                <img src="2.png" alt="Proyecto 1">
+            </div>
+        </div>
+        <div class="images-grid">
+            <div class="image-item"><img src="3.png" alt="Imagen 1"></div>
+            <div class="image-item"><img src="4.png" alt="Imagen 2"></div>
+            <div class="image-item"><img src="5.png" alt="Imagen 3"></div>
+            <div class="image-item"><img src="6.png" alt="Imagen 4"></div>
+            <div class="image-item"><img src="7.png" alt="Imagen 5"></div>
+            <div class="image-item"><img src="8.png" alt="Imagen 6"></div>
+            <div class="image-item"><img src="9.png" alt="Imagen 7"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Empresa. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        const navLinks = document.querySelector('.nav-links');
+        const menuBtn = document.createElement('button');
+        menuBtn.className = 'menu-btn';
+        menuBtn.innerHTML = '&#9776;';
+        menuBtn.style.display = 'none';
+        menuBtn.style.fontSize = '1.5rem';
+        menuBtn.style.cursor = 'pointer';
+        document.querySelector('.nav-container').appendChild(menuBtn);
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Image hover effect with caption
+        const images = document.querySelectorAll('.image-item img');
+        images.forEach(img => {
+            img.style.transition = 'transform 0.3s ease';
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            distance: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section, .m-v-o-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
